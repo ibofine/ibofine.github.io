@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第9章 maven的插件和生命周期 | 大数据征信</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第9章 maven的插件和生命周期
+本章介绍了maven生命周期、插件以及如何配置插件
+
+9.1 生命周期一般的项目都会经历这几个步骤：编译，测试，打包，部署，有些公司是手动方式，有些是自动化脚本方式，虽然方式类似，但不可能完全相同。maven对这些工作进行抽象和统一，总结了一套完善的生命周期。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第9章 maven的插件和生命周期">
+<meta property="og:url" content="http://www.ibofine.com/2015/11/12/chapter9/chapter9/index.html">
+<meta property="og:site_name" content="大数据征信">
+<meta property="og:description" content="第9章 maven的插件和生命周期
+本章介绍了maven生命周期、插件以及如何配置插件
+
+9.1 生命周期一般的项目都会经历这几个步骤：编译，测试，打包，部署，有些公司是手动方式，有些是自动化脚本方式，虽然方式类似，但不可能完全相同。maven对这些工作进行抽象和统一，总结了一套完善的生命周期。">
+<meta property="og:updated_time" content="2015-11-12T12:14:17.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第9章 maven的插件和生命周期">
+<meta name="twitter:description" content="第9章 maven的插件和生命周期
+本章介绍了maven生命周期、插件以及如何配置插件
+
+9.1 生命周期一般的项目都会经历这几个步骤：编译，测试，打包，部署，有些公司是手动方式，有些是自动化脚本方式，虽然方式类似，但不可能完全相同。maven对这些工作进行抽象和统一，总结了一套完善的生命周期。">
+  
+    <link rel="alternative" href="/atom.xml" title="大数据征信" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/my.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">JA</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/weibo.com" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/eclipse/" style="font-size: 15px;">eclipse</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/maven/" style="font-size: 20px;">maven</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/依赖特性/" style="font-size: 10px;">依赖特性</a> <a href="/tags/坐标/" style="font-size: 10px;">坐标</a> <a href="/tags/持续集成/" style="font-size: 10px;">持续集成</a> <a href="/tags/私服/" style="font-size: 10px;">私服</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/message0203">我的CSDN</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">擅长领域大数据分析、网络爬虫、搜索引擎、高并发网络架构。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">JA</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/my.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">JA</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/weibo.com" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-chapter9/chapter9" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/12/chapter9/chapter9/" class="article-date">
+  	<time datetime="2015-11-12T12:14:17.608Z" itemprop="datePublished">2015-11-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第9章 maven的插件和生命周期
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eclipse/">eclipse</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/">maven</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第9章_maven的插件和生命周期">第9章 maven的插件和生命周期</h1><blockquote>
+<p>本章介绍了maven生命周期、插件以及如何配置插件</p>
+</blockquote>
+<h2 id="9-1_生命周期">9.1 生命周期</h2><p>一般的项目都会经历这几个步骤：编译，测试，打包，部署，有些公司是手动方式，有些是自动化脚本方式，虽然方式类似，但不可能完全相同。maven对这些工作进行抽象和统一，总结了一套完善的生命周期。</p>
+<a id="more"></a>
+<h3 id="9-1-1_三套生命周期">9.1.1 三套生命周期</h3><p>maven的三套生命周期分别是：<code>clean</code>、<code>default</code>、<code>site</code>，每个周期都分为多个阶段。</p>
+<h3 id="9-1-2_clean生命周期">9.1.2 clean生命周期</h3><p>1、pre-clean：执行清理前需要完成的工作</p>
+<p>2、clean：清理上一次构建生成的文件</p>
+<p>3、post-clean：执行清理后需要完成的工作</p>
+<h3 id="9-1-3_default生命周期">9.1.3 default生命周期</h3><p>1、    validate：验证工程是否正确，所有需要的资源是否可用。</p>
+<p>2、    compile：编译项目的源代码。  </p>
+<p>3、    test：使用合适的单元测试框架来测试已编译的源代码。这些测试不需要已打包和布署。</p>
+<p>4、    package：把已编译的代码打包成可发布的格式，比如jar。</p>
+<p>5、    integration-test：如有需要，将包处理和发布到一个能够进行集成测试的环境。</p>
+<p>6、    verify：运行所有检查，验证包是否有效且达到质量标准。</p>
+<p>7、    install：把包安装到maven本地仓库，可以被其他工程作为依赖来使用。</p>
+<p>8、    Deploy：在集成或者发布环境下执行，将最终版本的包拷贝到远程的repository，使得其他的开发者或者工程可以共享。</p>
+<h3 id="9-1-4_site生命周期">9.1.4 site生命周期</h3><p>1、    pre-site：生成项目站点之前需要完成的工作<br>2、    site：生成项目站点文档<br>3、    post-site：生成项目站点之后需要完成的工作<br>4、    site-deploy：将项目站点发布到服务器上</p>
+<h2 id="9-2_插件">9.2 插件</h2><p>maven仅仅定义了抽象的生命周期，具体的任务交给插件来完成。插件以独立的构件形式存在。</p>
+<h3 id="9-2-1_内置绑定">9.2.1 内置绑定</h3><p>为了能让用户不需要配置快速的构件项目，maven在核心为一些主要的生命周期阶段绑定了很多插件的目标，当用户通过命令行调用生命周期阶段的时候，对应的插件目标就会执行相应的任务。</p>
+<ul>
+<li><p>clean生命周期阶段与插件目标的绑定关系<br>|    生命周期阶段        |    插件目标        |<br>|    ——:    |    :——|<br>|    pre-clean     |        |<br>|    clean    |    maven-clean-plugin:clean|<br>|    post-clean    |    |     </p>
+</li>
+<li><p>site生命周期阶段与插件目标的绑定关系 </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">生命周期阶段</th>
+<th style="text-align:left">插件目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">pre-site</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:right">site</td>
+<td style="text-align:left">maven-site-plugin:site</td>
+</tr>
+<tr>
+<td style="text-align:right">post-site</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:right">site-deploy</td>
+<td style="text-align:left">maven-site-plugin:deploy</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>default生命周期与内置插件绑定关系</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">生命周期阶段</th>
+<th style="text-align:left">插件目标</th>
+<th style="text-align:left">执行任务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">process-resources</td>
+<td style="text-align:left">maven-resources-plugin:resources</td>
+<td style="text-align:left">复制主资源文件至主输出目录</td>
+</tr>
+<tr>
+<td style="text-align:right">compile</td>
+<td style="text-align:left">maven-compile-plugin:compile</td>
+<td style="text-align:left">编译主代码至主输出目录</td>
+</tr>
+<tr>
+<td style="text-align:right">process-test-resources</td>
+<td style="text-align:left">maven-resources-plugin:testRresources</td>
+<td style="text-align:left">复制测试资源文件至测试输出目录</td>
+</tr>
+<tr>
+<td style="text-align:right">test-compile</td>
+<td style="text-align:left">maven-compiler-plugin:testCompile</td>
+<td style="text-align:left">编译测试代码至测试输出目录</td>
+</tr>
+<tr>
+<td style="text-align:right">test</td>
+<td style="text-align:left">maven-surefire-plugin:test</td>
+<td style="text-align:left">执行测试用例</td>
+</tr>
+<tr>
+<td style="text-align:right">package</td>
+<td style="text-align:left">maven-jar-plugin:jar</td>
+<td style="text-align:left">创建项目jar包</td>
+</tr>
+<tr>
+<td style="text-align:right">install</td>
+<td style="text-align:left">maven-install-plugin:install</td>
+<td style="text-align:left">将项目输出构件安装到本地仓库</td>
+</tr>
+<tr>
+<td style="text-align:right">deploy</td>
+<td style="text-align:left">maven-deploy-plugin:deploy</td>
+<td style="text-align:left">将项目输出构件部署到远程仓库</td>
+</tr>
+</tbody>
+</table>
+<h3 id="9-2-2_插件配置">9.2.2 插件配置</h3><p>插件配置分为命令行和pom文件配置，本文只介绍pom文件配置插件。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">build</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">plugins</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.3.2<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="title">source</span>&gt;</span>1.7<span class="tag">&lt;/<span class="title">source</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="title">target</span>&gt;</span>1.7<span class="tag">&lt;/<span class="title">target</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">plugins</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以上代码配置了maven-compiler-plugin插件，指定编辑版本为JDK1.7</p>
+<h3 id="9-2-2_更多插件">9.2.2 更多插件</h3><p>更多插件请访问maven插件官网：<a href="http://maven.apache.org/plugins/index.html" target="_blank" rel="external">http://maven.apache.org/plugins/index.html</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/12/chapter10/chapter10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          第10章 多环境下构建项目
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/12/chapter8/chapter8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第8章 私服nexus</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'ibofine'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 JA
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
