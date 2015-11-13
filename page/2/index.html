@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/eclipse/" style="font-size: 15px;">eclipse</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/maven/" style="font-size: 20px;">maven</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/依赖特性/" style="font-size: 10px;">依赖特性</a> <a href="/tags/坐标/" style="font-size: 10px;">坐标</a> <a href="/tags/持续集成/" style="font-size: 10px;">持续集成</a> <a href="/tags/私服/" style="font-size: 10px;">私服</a>
+						<a href="/tags/eclipse/" style="font-size: 13.33px;">eclipse</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/maven/" style="font-size: 20px;">maven</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/依赖特性/" style="font-size: 10px;">依赖特性</a> <a href="/tags/坐标/" style="font-size: 10px;">坐标</a> <a href="/tags/持续集成/" style="font-size: 10px;">持续集成</a> <a href="/tags/私服/" style="font-size: 10px;">私服</a>
 					</div>
 				</section>
 				
@@ -211,8 +211,68 @@
         <h1 id="第7章_仓库">第7章 仓库</h1><blockquote>
 <p>本章介绍了maven的仓库概念，仓库分类等内容。</p>
 </blockquote>
-<p>[TOC]</p>
-<h2 id="7-1_何为maven仓库">7.1 何为maven仓库</h2><p>maven仓库就是放置所有jar文件（war，zip，pom等等）的地方，maven项目可以从maven仓库中获取自己所需要的依赖jar。此外，仓库中的构件都有自己的坐标，坐标描述了版本、打包方式和maven如何找到此构件。<br>
+<h2 id="7-1_何为maven仓库">7.1 何为maven仓库</h2><p>maven仓库就是放置所有jar文件（war，zip，pom等等）的地方，maven项目可以从maven仓库中获取自己所需要的依赖jar。此外，仓库中的构件都有自己的坐标，坐标描述了版本、打包方式和maven如何找到此构件。</p>
+<h2 id="7-2_仓库的分类">7.2 仓库的分类</h2><h3 id="7-2-1_本地仓库">7.2.1 本地仓库</h3><p>在第一章安装maven时，我们已经设置了maven本地仓库，那么现在，详细说一说为什么要设置本地仓库。<br>在maven项目中，是没有lib目录来存放依赖文件的，如果pom.xml中需要依赖，在编译或测试时，maven会自动基于坐标使用本地仓库的依赖文件。<br>默认情况，maven本地仓库位置在用户根目录的.m2文件夹中。<br>某些情况下，例如c盘不足，我们需要设置仓库位置。</p>
+<h4 id="7-2-1-1_Linux设置方法">7.2.1.1 Linux设置方法</h4><p>找到已注释掉的<br><code>&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</code>，解开注释；<br>修改内容为：<br><code>&lt;localRepository&gt;/usr/local/maven/repo&lt;/localRepository&gt;</code><br>当然，路径你可以自己定义。</p>
+<p><img src="https://img.alicdn.com/imgextra/i3/653726111/TB20unehXXXXXb_XpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
+<h4 id="7-2-1-2_Window设置方法">7.2.1.2 Window设置方法</h4><p>找到已注释掉的<br><code>&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</code></p>
+<p>解开注释，修改内容为：</p>
+<p><code>&lt;localRepository&gt; D:/repository &lt;/localRepository&gt;</code></p>
+<p>当然，路径你可以自己定义。</p>
+<p><img src="https://img.alicdn.com/imgextra/i3/653726111/TB2UVYdhXXXXXcIXpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
+<hr>
+<p>一个maven构件，只有在本地仓库中时，才能供其他maven项目使用。maven一般会自动从中央仓库下载至本地仓库中。<br>自建的项目需要安装至本地仓库，才能供其他maven项目调用。<br>安装至本地仓库命令：<code>mvn clean install</code></p>
+<h3 id="7-2-2_远程仓库">7.2.2 远程仓库</h3><p>远程仓库可以看做和中央仓库相似，他的构件基本上都是从中央仓库克隆来的，还有些是自己发布的构件。那为什么要远程仓库？有时，国内的网络访问中央仓库很慢，这时可以修改maven配置来访问速度更快的远程仓库来下载构件。</p>
+<h4 id="7-2-2-1_远程仓库配置">7.2.2.1 远程仓库配置</h4><p>在pom.xml文件中，<repositories>标签管理远程仓库。</repositories></p>
+<p>常见的远程仓库地址：<br>开源中国：<a href="http://maven.oschina.net/content/groups/public/" target="_blank" rel="external">http://maven.oschina.net/content/groups/public/</a></p>
+<p>配置pom链接远程仓库：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 远程仓库配置 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">repositories</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">repository</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">id</span>&gt;</span>oschina<span class="tag">&lt;/<span class="title">id</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">name</span>&gt;</span>oschina repo<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">releases</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="title">enabled</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="title">releases</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">snapshots</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="title">enabled</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="title">snapshots</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">url</span>&gt;</span>http://maven.oschina.net/content/groups/public/<span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">repository</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">repositories</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">标签</th>
+<th style="text-align:left">介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">id</td>
+<td style="text-align:left">标识仓库的唯一值，central会覆盖中央仓库</td>
+</tr>
+<tr>
+<td style="text-align:right">name</td>
+<td style="text-align:left">仓库名称</td>
+</tr>
+<tr>
+<td style="text-align:right">releases</td>
+<td style="text-align:left">true表示开启仓库发布版本下载，false表示禁止</td>
+</tr>
+<tr>
+<td style="text-align:right">snapshots</td>
+<td style="text-align:left">false表示禁止快照版本下载，true表示支持</td>
+</tr>
+<tr>
+<td style="text-align:right">url</td>
+<td style="text-align:left">仓库地址，基于http协议</td>
+</tr>
+<tr>
+<td style="text-align:right">updatePolicy</td>
+<td style="text-align:left">远程仓库的检查频率：never-从不检查，always-每次构建都检查，interval：x-每x分钟检查，daily-每天检查</td>
+</tr>
+<tr>
+<td style="text-align:right">checksumPolicy</td>
+<td style="text-align:left">检查检验和文件的策略：ignore-不检查，warn-校验错误警告，fail-校验错误构建失败</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-2-3_中央仓库">7.2.3 中央仓库</h3><p>当maven刚安装至系统中时，本地仓库是空的，maven至少需要一个可用的远程仓库来下载构件，才能执行maven命令。中央仓库就是这样一个远程仓库。<br>maven默认的远程仓库地址是：<a href="http://repo1.maven.org/maven2/" target="_blank" rel="external">http://repo1.maven.org/maven2/</a></p>
+<h3 id="7-2-4_私服">7.2.4 私服</h3><p>私服是一种特殊的远程仓库，他架设在局域网内或公司内网，负责代理公网上的远程仓库。<br>maven构建项目时，本地仓库没有所需构件，先请求私服，如果私服上不存在，则从外部的远程仓库下载构件缓存至私服上，供用户使用。<br>私服的好处：</p>
+<ul>
+<li>加速maven构件下载，私服一般会搭建在公司内部局域网中，这样maven的构件下载速度可以比公网下载快很多。</li>
+<li>部署第三方构件，当有些构件不能从远程仓库下载，或者某些自己内部开发出的构件，都可以部署至私服上，供用户使用。</li>
+<li>降低中央仓库负荷，使用私服可以避免对中央仓库的重复下载。</li>
+</ul>
+
       
     </div>
     
@@ -221,10 +281,6 @@
       
       
 
-      
-        <p class="article-more-link">
-          <a  href="/2015/11/12/chapter7/chapter7/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>

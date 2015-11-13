@@ -8,7 +8,7 @@
   <meta name="description" content="第10章 多环境下构建项目
 本章根据实际情况，介绍多种部署环境下构建项目的配置。
 
-在大多数公司，都会有多种项目的运行环境，例如：开发环境、测试环境、预发布环境、正式环境…我们都会遇到这样一个问题，不同环境的一些配置是不同的，例如：数据库配置、网银接口的账号和地址配置、邮箱和短信账号配置等等。那么在maven构建项目时，需要根据不同的环境，打包不同配置。">
+在大多数公司，都会有多种项目的运行环境，例如：开发环境、测试环境、预发布环境、正式环境…我们都会遇到这样一个问题，不同环境的一些配置是不同的，例如：数据库配置、网银接口的账号和地址配置、邮箱和短信账号配置等等。那么在maven构建项目时，需要根据不同的环境，打包不同配置。还是用我们的crm项目进行演示，基本项目目录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第10章 多环境下构建项目">
 <meta property="og:url" content="http://www.ibofine.com/2015/11/12/chapter10/chapter10/index.html">
@@ -16,29 +16,27 @@
 <meta property="og:description" content="第10章 多环境下构建项目
 本章根据实际情况，介绍多种部署环境下构建项目的配置。
 
-在大多数公司，都会有多种项目的运行环境，例如：开发环境、测试环境、预发布环境、正式环境…我们都会遇到这样一个问题，不同环境的一些配置是不同的，例如：数据库配置、网银接口的账号和地址配置、邮箱和短信账号配置等等。那么在maven构建项目时，需要根据不同的环境，打包不同配置。">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142348706.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142366499.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142419045.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142432522.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142455679.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142535238.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142538516.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142589162.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142597697.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142609924.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142618994.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142641936.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142666880.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142671281.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447142674445.png">
-<meta property="og:updated_time" content="2015-11-12T12:14:47.901Z">
+在大多数公司，都会有多种项目的运行环境，例如：开发环境、测试环境、预发布环境、正式环境…我们都会遇到这样一个问题，不同环境的一些配置是不同的，例如：数据库配置、网银接口的账号和地址配置、邮箱和短信账号配置等等。那么在maven构建项目时，需要根据不同的环境，打包不同配置。还是用我们的crm项目进行演示，基本项目目录">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/653726111/TB24YnbhXXXXXXqXFXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/653726111/TB2E8LFhXXXXXbgXXXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB20UzDhXXXXXbaXXXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB2oFbdhXXXXXcEXpXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB2aZTAhXXXXXb.XXXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/653726111/TB2JXjjhXXXXXbUXpXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/653726111/TB2uFjLhXXXXXXLXXXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i4/653726111/TB27EfzhXXXXXb8XXXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/653726111/TB2zRzFhXXXXXaYXXXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB2eKLohXXXXXayXpXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i3/653726111/TB2RRLkhXXXXXaVXpXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/653726111/TB2FBTphXXXXXXoXpXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i1/653726111/TB248jqhXXXXXXsXpXXXXXXXXXX_!!653726111.png">
+<meta property="og:updated_time" content="2015-11-13T04:59:12.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第10章 多环境下构建项目">
 <meta name="twitter:description" content="第10章 多环境下构建项目
 本章根据实际情况，介绍多种部署环境下构建项目的配置。
 
-在大多数公司，都会有多种项目的运行环境，例如：开发环境、测试环境、预发布环境、正式环境…我们都会遇到这样一个问题，不同环境的一些配置是不同的，例如：数据库配置、网银接口的账号和地址配置、邮箱和短信账号配置等等。那么在maven构建项目时，需要根据不同的环境，打包不同配置。">
+在大多数公司，都会有多种项目的运行环境，例如：开发环境、测试环境、预发布环境、正式环境…我们都会遇到这样一个问题，不同环境的一些配置是不同的，例如：数据库配置、网银接口的账号和地址配置、邮箱和短信账号配置等等。那么在maven构建项目时，需要根据不同的环境，打包不同配置。还是用我们的crm项目进行演示，基本项目目录">
   
     <link rel="alternative" href="/atom.xml" title="大数据征信" type="application/atom+xml">
   
@@ -137,7 +135,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/eclipse/" style="font-size: 15px;">eclipse</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/maven/" style="font-size: 20px;">maven</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/依赖特性/" style="font-size: 10px;">依赖特性</a> <a href="/tags/坐标/" style="font-size: 10px;">坐标</a> <a href="/tags/持续集成/" style="font-size: 10px;">持续集成</a> <a href="/tags/私服/" style="font-size: 10px;">私服</a>
+						<a href="/tags/eclipse/" style="font-size: 13.33px;">eclipse</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/maven/" style="font-size: 20px;">maven</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/依赖特性/" style="font-size: 10px;">依赖特性</a> <a href="/tags/坐标/" style="font-size: 10px;">坐标</a> <a href="/tags/持续集成/" style="font-size: 10px;">持续集成</a> <a href="/tags/私服/" style="font-size: 10px;">私服</a>
 					</div>
 				</section>
 				
@@ -209,7 +207,7 @@
   
     <div class="article-meta">
       <a href="/2015/11/12/chapter10/chapter10/" class="article-date">
-  	<time datetime="2015-11-12T12:14:47.903Z" itemprop="datePublished">2015-11-12</time>
+  	<time datetime="2015-11-13T04:59:12.491Z" itemprop="datePublished">2015-11-12</time>
 </a>
     </div>
   
@@ -245,49 +243,48 @@
         <h1 id="第10章_多环境下构建项目">第10章 多环境下构建项目</h1><blockquote>
 <p>本章根据实际情况，介绍多种部署环境下构建项目的配置。</p>
 </blockquote>
-<p>在大多数公司，都会有多种项目的运行环境，例如：开发环境、测试环境、预发布环境、正式环境…<br>我们都会遇到这样一个问题，不同环境的一些配置是不同的，例如：数据库配置、网银接口的账号和地址配置、邮箱和短信账号配置等等。那么在maven构建项目时，需要根据不同的环境，打包不同配置。<br><a id="more"></a></p>
-<p>还是用我们的crm项目进行演示，基本项目目录：</p>
-<p><img src="http://img.ibofine.com/img/1447142348706.png" alt="Alt text"></p>
+<p>在大多数公司，都会有多种项目的运行环境，例如：开发环境、测试环境、预发布环境、正式环境…<br>我们都会遇到这样一个问题，不同环境的一些配置是不同的，例如：数据库配置、网银接口的账号和地址配置、邮箱和短信账号配置等等。那么在maven构建项目时，需要根据不同的环境，打包不同配置。<br>还是用我们的crm项目进行演示，基本项目目录：</p>
+<p><img src="https://img.alicdn.com/imgextra/i4/653726111/TB24YnbhXXXXXXqXFXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <h2 id="10-1_属性配置">10.1 属性配置</h2><p>首先，在parent项目中配置不同环境的属性，例如，我们的数据库链接和redis链接，正式环境和开发环境不一致，此时在parent中的pom.xml中添加，如图：</p>
-<p><img src="http://img.ibofine.com/img/1447142366499.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i1/653726111/TB2E8LFhXXXXXbgXXXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">profiles</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">profile</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="title">id</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">properties</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">dataSource.url</span>&gt;</span>jdbc:mysql://192.168.100.211:3306/crm<span class="tag">&lt;/<span class="title">dataSource.url</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">dataSource.username</span>&gt;</span>dev<span class="tag">&lt;/<span class="title">dataSource.username</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">dataSource.password</span>&gt;</span>devpassword<span class="tag">&lt;/<span class="title">dataSource.password</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">redis.host</span>&gt;</span>192.168.100.211<span class="tag">&lt;/<span class="title">redis.host</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">redis.port</span>&gt;</span>6379<span class="tag">&lt;/<span class="title">redis.port</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">redis.password</span>&gt;</span>redispassword<span class="tag">&lt;/<span class="title">redis.password</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">properties</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">activation</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="title">activeByDefault</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">activation</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">profile</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">profile</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">id</span>&gt;</span>online<span class="tag">&lt;/<span class="title">id</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">properties</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">dataSource.url</span>&gt;</span>jdbc:mysql://192.168.200.211:3406/crm<span class="tag">&lt;/<span class="title">dataSource.url</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">dataSource.username</span>&gt;</span>online<span class="tag">&lt;/<span class="title">dataSource.username</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">dataSource.password</span>&gt;</span>onlinepassword<span class="tag">&lt;/<span class="title">dataSource.password</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">redis.host</span>&gt;</span>192.168.200.211<span class="tag">&lt;/<span class="title">redis.host</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">redis.port</span>&gt;</span>6479<span class="tag">&lt;/<span class="title">redis.port</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">redis.password</span>&gt;</span>redispassword<span class="tag">&lt;/<span class="title">redis.password</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">properties</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>以上代码中，id为dev的是开发环境，id为online的正式环境，其中activeByDefault表示default为开发环境，意思说当不添加-P命令时，以开发环境的配置打包。</p>
 <h2 id="10-2_资源文件配置">10.2 资源文件配置</h2><p>如图，在crm-web中，有application.properties配置文件，此文件中配置了web项目中需要的所有配置，其中也包含数据库链接和redis链接。为了能让maven的maven-resources-plugin插件替换关键点，我们将需要替换的地方用<code>${}</code>代替。</p>
-<p><img src="http://img.ibofine.com/img/1447142419045.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i2/653726111/TB20UzDhXXXXXbaXXXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <p><strong>注意：所有需要替换的地方，命名需要与parent项目pom.xml中的标签名相同，如图。</strong></p>
-<p><img src="http://img.ibofine.com/img/1447142432522.png" alt="Alt text"></p>
-<p>10.3 pom.xml配置</p>
-<p>最后，在crm-web项目pom.xml中，添加maven-resources-plugin插件，同时在resource中，设置过滤配置filtering为<code>true</code>。</p>
-<p><img src="http://img.ibofine.com/img/1447142455679.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i2/653726111/TB2oFbdhXXXXXcEXpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
+<h1 id="10-3_pom-xml配置">10.3 pom.xml配置</h1><p>最后，在crm-web项目pom.xml中，添加maven-resources-plugin插件，同时在resource中，设置过滤配置filtering为<code>true</code>。</p>
+<p><img src="https://img.alicdn.com/imgextra/i2/653726111/TB2aZTAhXXXXXb.XXXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">build</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">finalName</span>&gt;</span>crm-web<span class="tag">&lt;/<span class="title">finalName</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">resources</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">resource</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">directory</span>&gt;</span>$&#123;basedir&#125;/src/main/resources<span class="tag">&lt;/<span class="title">directory</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="title">filtering</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">resource</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">resources</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">outputDirectory</span>&gt;</span>$&#123;basedir&#125;/src/main/webapp/WEB-INF/classes<span class="tag">&lt;/<span class="title">outputDirectory</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">plugins</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">plugin</span>&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>maven-resources-plugin<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.7<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">	        <span class="tag">&lt;<span class="title">configuration</span>&gt;</span></span><br><span class="line">	          <span class="tag">&lt;<span class="title">encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="title">encoding</span>&gt;</span></span><br><span class="line">	        <span class="tag">&lt;/<span class="title">configuration</span>&gt;</span></span><br><span class="line">	     	<span class="tag">&lt;/<span class="title">plugin</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="10-4_不同环境打包">10.4 不同环境打包</h2><p>配置已完成，现在来做打包测试。</p>
 <h3 id="10-4-1_开发环境打包">10.4.1 开发环境打包</h3><ul>
-<li><p>命令方式<br><code>mvn clean install –Pdev</code></p>
-<p><img src="http://img.ibofine.com/img/1447142535238.png" alt="Alt text"></p>
-<p><img src="http://img.ibofine.com/img/1447142538516.png" alt="Alt text"></p>
-</li>
+<li>命令方式<br><code>mvn clean install –Pdev</code></li>
 </ul>
-<ul>
-<li>Eclipse操作方式<br>右击crm-parent—&gt;Run As—&gt;Run configuations<br>在Goals中键入<code>clean install –Pdev</code>，然后点击Run<br><strong>注意：-P后的字母代表开发环境或正式环境的ID。</strong><br>运行不起来请看第二章2.2章节<br>如图<br><img src="http://img.ibofine.com/img/1447142589162.png" alt="Alt text"></li>
+<pre><code>![<span class="link_label">Alt text</span>](<span class="link_url">https://img.alicdn.com/imgextra/i4/653726111/TB2mx2KhXXXXXajXXXXXXXXXXXX_!!653726111.png</span>)
+
+![<span class="link_label">Alt text</span>](<span class="link_url">https://img.alicdn.com/imgextra/i4/653726111/TB272DxhXXXXXcCXXXXXXXXXXXX_!!653726111.png</span>)
+</code></pre><ul>
+<li>Eclipse操作方式<br>右击crm-parent—&gt;Run As—&gt;Run configuations<br>在Goals中键入<code>clean install –Pdev</code>，然后点击Run<br><strong>注意：-P后的字母代表开发环境或正式环境的ID。</strong><br>运行不起来请看第二章2.2章节<br>如图</li>
 </ul>
+<p><img src="https://img.alicdn.com/imgextra/i1/653726111/TB2JXjjhXXXXXbUXpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <p>因为parent设置了聚合关系，所以他的子项目都打包完成，如图：</p>
-<p><img src="http://img.ibofine.com/img/1447142597697.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i4/653726111/TB2uFjLhXXXXXXLXXXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <p>验证我们的配置文件是否正确，在crm-web项目中target/crm-web/WEB-INF/classes/中，打开application.properties，发现已经替换成开发环境的变量，如图：</p>
-<p><img src="http://img.ibofine.com/img/1447142609924.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i4/653726111/TB27EfzhXXXXXb8XXXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <p>同样，打开war包验证application.properties，也是正确的。</p>
-<p><img src="http://img.ibofine.com/img/1447142618994.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i1/653726111/TB2zRzFhXXXXXaYXXXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <h3 id="10-4-2_正式环境打包">10.4.2 正式环境打包</h3><p>与开发环境的步骤一致。</p>
 <ul>
 <li>命令方式：<br><code>mvn clean install –Ponline</code></li>
 </ul>
-<p><img src="http://img.ibofine.com/img/1447142641936.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i2/653726111/TB2eKLohXXXXXayXpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <ul>
 <li>Eclipse操作方式：</li>
 </ul>
 <p>右击crm-parent—&gt;Run As—&gt;Run configuations<br>在Goals中键入<code>clean install –Ponline</code>，然后点击Run<br><strong>注意：-P后的字母代表开发环境或正式环境的ID。</strong><br>如图</p>
-<p><img src="http://img.ibofine.com/img/1447142666880.png" alt="Alt text"></p>
-<p><img src="http://img.ibofine.com/img/1447142671281.png" alt="Alt text"></p>
-<p><img src="http://img.ibofine.com/img/1447142674445.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i3/653726111/TB2RRLkhXXXXXaVXpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i1/653726111/TB2FBTphXXXXXXoXpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i1/653726111/TB248jqhXXXXXXsXpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 
       
     </div>
@@ -296,15 +293,6 @@
   
     
 <nav id="article-nav">
-  
-    <a href="/2015/11/12/chapter3/chapter3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          第3章 一切基于pom
-        
-      </div>
-    </a>
   
   
     <a href="/2015/11/12/chapter9/chapter9/" id="article-nav-older" class="article-nav-link-wrap">

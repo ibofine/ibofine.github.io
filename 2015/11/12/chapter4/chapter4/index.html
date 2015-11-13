@@ -17,10 +17,10 @@
 本章详细介绍maven的依赖特性和依赖范围，如何排除依赖。
 
 4.1 什么是依赖传递举个例子在非maven项目中，你需要使用spring功能，你会想到导入spring的jar包，那么，srping又需要其他依赖jar包支持，所以你又需要去导入其他jar包，多次反复尝试启动项目后，你终于成功了！maven项目就不需要这么麻烦，你只要在pom.xml文件中，引入spring">
-<meta property="og:image" content="http://img.ibofine.com/img/1447125793809.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447125828631.png">
-<meta property="og:image" content="http://img.ibofine.com/img/1447125950885.png">
-<meta property="og:updated_time" content="2015-11-12T12:10:00.695Z">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB2nfLdhXXXXXcIXpXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB2e.YjhXXXXXb2XpXXXXXXXXXX_!!653726111.png">
+<meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB2hw_nhXXXXXa0XpXXXXXXXXXX_!!653726111.png">
+<meta property="og:updated_time" content="2015-11-13T04:57:15.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第4章 maven依赖特性">
 <meta name="twitter:description" content="第4章 maven依赖特性
@@ -125,7 +125,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/eclipse/" style="font-size: 15px;">eclipse</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/maven/" style="font-size: 20px;">maven</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/依赖特性/" style="font-size: 10px;">依赖特性</a> <a href="/tags/坐标/" style="font-size: 10px;">坐标</a> <a href="/tags/持续集成/" style="font-size: 10px;">持续集成</a> <a href="/tags/私服/" style="font-size: 10px;">私服</a>
+						<a href="/tags/eclipse/" style="font-size: 13.33px;">eclipse</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/maven/" style="font-size: 20px;">maven</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/依赖特性/" style="font-size: 10px;">依赖特性</a> <a href="/tags/坐标/" style="font-size: 10px;">坐标</a> <a href="/tags/持续集成/" style="font-size: 10px;">持续集成</a> <a href="/tags/私服/" style="font-size: 10px;">私服</a>
 					</div>
 				</section>
 				
@@ -197,7 +197,7 @@
   
     <div class="article-meta">
       <a href="/2015/11/12/chapter4/chapter4/" class="article-date">
-  	<time datetime="2015-11-12T12:10:00.711Z" itemprop="datePublished">2015-11-12</time>
+  	<time datetime="2015-11-13T04:57:15.423Z" itemprop="datePublished">2015-11-12</time>
 </a>
     </div>
   
@@ -233,13 +233,14 @@
         <h1 id="第4章_maven依赖特性">第4章 maven依赖特性</h1><blockquote>
 <p>本章详细介绍maven的依赖特性和依赖范围，如何排除依赖。</p>
 </blockquote>
-<h2 id="4-1_什么是依赖传递">4.1 什么是依赖传递</h2><p>举个例子<br>在非maven项目中，你需要使用spring功能，你会想到导入spring的jar包，那么，srping又需要其他依赖jar包支持，所以你又需要去导入其他jar包，多次反复尝试启动项目后，你终于成功了！<br>maven项目就不需要这么麻烦，你只要在pom.xml文件中，引入spring相关配置，那么他会自动引入其他依赖jar包，<strong>这就是maven的依赖传递。</strong><br><a id="more"></a><br><img src="http://img.ibofine.com/img/1447125793809.png" alt="Alt text"></p>
+<h2 id="4-1_什么是依赖传递">4.1 什么是依赖传递</h2><p>举个例子<br>在非maven项目中，你需要使用spring功能，你会想到导入spring的jar包，那么，srping又需要其他依赖jar包支持，所以你又需要去导入其他jar包，多次反复尝试启动项目后，你终于成功了！<br>maven项目就不需要这么麻烦，你只要在pom.xml文件中，引入spring相关配置，那么他会自动引入其他依赖jar包，<strong>这就是maven的依赖传递。</strong></p>
+<p><img src="https://img.alicdn.com/imgextra/i2/653726111/TB2nfLdhXXXXXcIXpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <p>以下是一个配置文件，仅引入了spring和junit两个依赖配置，但maven已自动导入了其他的jar包</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">project</span> <span class="attribute">xmlns</span>=<span class="value">"http://maven.apache.org/POM/4.0.0"</span> <span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">  <span class="attribute">xsi:schemaLocation</span>=<span class="value">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="title">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>com.group<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>simple<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="title">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">name</span>&gt;</span>simple<span class="tag">&lt;/<span class="title">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">url</span>&gt;</span>http://maven.apache.org<span class="tag">&lt;/<span class="title">url</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="title">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">org.springframework-version</span>&gt;</span>3.1.0.RELEASE<span class="tag">&lt;/<span class="title">org.springframework-version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="title">dependencies</span>&gt;</span></span><br><span class="line">  	</span><br><span class="line">  	<span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">version</span>&gt;</span>$&#123;org.springframework-version&#125;<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://img.ibofine.com/img/1447125828631.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i2/653726111/TB2e.YjhXXXXXb2XpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <h2 id="4-2_依赖特性的特点">4.2 依赖特性的特点</h2><h3 id="4-2-1_依赖范围">4.2.1 依赖范围</h3><p>什么是依赖范围？<br>依赖范围指：决定依赖特性在构建的哪个阶段起作用。<br>举个例子，我需要做junit测试，所以需要引入junit相关jar，但我在发布项目时，我又不需要这个jar，所以（你有这个需求，maven肯定有这个解决办法），在配置时，需要指定依赖的范围。</p>
 <p>在配置依赖时，scope标签就是用来规范依赖范围。</p>
-<p><img src="http://img.ibofine.com/img/1447125950885.png" alt="Alt text"></p>
+<p><img src="https://img.alicdn.com/imgextra/i2/653726111/TB2hw_nhXXXXXa0XpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <table>
 <thead>
 <tr>
@@ -295,8 +296,8 @@
     </a>
   
   
-    <a href="/2015/11/12/chapter2/chapter2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">第2章 Windows 和 Eclipse的配置</div>
+    <a href="/2015/11/12/chapter3/chapter3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第3章 一切基于pom</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
