@@ -8,8 +8,7 @@
   <meta name="description" content="第5章 maven继承特性
 本章尽量用通俗的语言来介绍maven的继承特性。
 
-5.1 什么是继承特性在代码中，child类继承了parent类，那么child具有父类的所有属性。在maven中也类似，父项目pom文件中定义的属性、依赖等配置都可以让子项目pom继承。
-5.2 如何使用假设我们在开发一个CRM项目，首先定义几个maven实际项目，crm-dao,crm-service,crm-we">
+5.1 什么是继承特性在代码中，child类继承了parent类，那么child具有父类的所有属性。在maven中也类似，父项目pom文件中定义的属性、依赖等配置都可以让子项目pom继承。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第5章 maven继承特性">
 <meta property="og:url" content="http://www.ibofine.com/2015/11/12/chapter5/chapter5/index.html">
@@ -17,19 +16,17 @@
 <meta property="og:description" content="第5章 maven继承特性
 本章尽量用通俗的语言来介绍maven的继承特性。
 
-5.1 什么是继承特性在代码中，child类继承了parent类，那么child具有父类的所有属性。在maven中也类似，父项目pom文件中定义的属性、依赖等配置都可以让子项目pom继承。
-5.2 如何使用假设我们在开发一个CRM项目，首先定义几个maven实际项目，crm-dao,crm-service,crm-we">
+5.1 什么是继承特性在代码中，child类继承了parent类，那么child具有父类的所有属性。在maven中也类似，父项目pom文件中定义的属性、依赖等配置都可以让子项目pom继承。">
 <meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB2p6a_hXXXXXXHXFXXXXXXXXXX_!!653726111.png">
 <meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB2nh_zhXXXXXbUXXXXXXXXXXXX_!!653726111.png">
 <meta property="og:image" content="https://img.alicdn.com/imgextra/i2/653726111/TB250PNhXXXXXXlXXXXXXXXXXXX_!!653726111.png">
-<meta property="og:updated_time" content="2015-11-13T04:57:34.532Z">
+<meta property="og:updated_time" content="2015-11-13T05:04:15.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第5章 maven继承特性">
 <meta name="twitter:description" content="第5章 maven继承特性
 本章尽量用通俗的语言来介绍maven的继承特性。
 
-5.1 什么是继承特性在代码中，child类继承了parent类，那么child具有父类的所有属性。在maven中也类似，父项目pom文件中定义的属性、依赖等配置都可以让子项目pom继承。
-5.2 如何使用假设我们在开发一个CRM项目，首先定义几个maven实际项目，crm-dao,crm-service,crm-we">
+5.1 什么是继承特性在代码中，child类继承了parent类，那么child具有父类的所有属性。在maven中也类似，父项目pom文件中定义的属性、依赖等配置都可以让子项目pom继承。">
   
     <link rel="alternative" href="/atom.xml" title="大数据征信" type="application/atom+xml">
   
@@ -200,7 +197,7 @@
   
     <div class="article-meta">
       <a href="/2015/11/12/chapter5/chapter5/" class="article-date">
-  	<time datetime="2015-11-13T04:57:34.534Z" itemprop="datePublished">2015-11-12</time>
+  	<time datetime="2015-11-13T05:04:15.556Z" itemprop="datePublished">2015-11-12</time>
 </a>
     </div>
   
@@ -237,6 +234,7 @@
 <p>本章尽量用通俗的语言来介绍maven的继承特性。</p>
 </blockquote>
 <h2 id="5-1_什么是继承特性">5.1 什么是继承特性</h2><p>在代码中，child类继承了parent类，那么child具有父类的所有属性。<br>在maven中也类似，父项目pom文件中定义的属性、依赖等配置都可以让子项目pom继承。</p>
+<a id="more"></a>
 <h2 id="5-2_如何使用">5.2 如何使用</h2><p>假设我们在开发一个CRM项目，首先定义几个maven实际项目，crm-dao,crm-service,crm-web，这几个项目是同级的，crm-web依赖crm-service，crm-service依赖service-dao，依赖关系如图：</p>
 <p><img src="https://img.alicdn.com/imgextra/i2/653726111/TB2p6a_hXXXXXXHXFXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <p>这时，创建一个crm-parent项目，在项目中配置所有需要使用的依赖和属性，其他项目继承这个项目，则会自动引入，关系如图：</p>

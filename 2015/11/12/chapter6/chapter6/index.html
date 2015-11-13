@@ -8,8 +8,7 @@
   <meta name="description" content="第6章 maven聚合特性
 本章用一个例子介绍maven的聚合特性。
 
-6.1 什么是聚合在上一章中，我们讲解了maven的继承特性，他可以使子项目直接引用父项目定义的依赖和插件。那么，如果有多个子项目，如何通过父项目进行管理，这就需要考虑使用聚合特性。所以，maven聚合特性可以把多个项目模块聚合在一起构建。
-6.2 如何使用还是拿上章的项目来演示，首先在crm-parent中增加标签标签中是所">
+6.1 什么是聚合在上一章中，我们讲解了maven的继承特性，他可以使子项目直接引用父项目定义的依赖和插件。那么，如果有多个子项目，如何通过父项目进行管理，这就需要考虑使用聚合特性。所以，maven聚合特性可以把多个项目模块聚合在一起构建。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第6章 maven聚合特性">
 <meta property="og:url" content="http://www.ibofine.com/2015/11/12/chapter6/chapter6/index.html">
@@ -17,19 +16,17 @@
 <meta property="og:description" content="第6章 maven聚合特性
 本章用一个例子介绍maven的聚合特性。
 
-6.1 什么是聚合在上一章中，我们讲解了maven的继承特性，他可以使子项目直接引用父项目定义的依赖和插件。那么，如果有多个子项目，如何通过父项目进行管理，这就需要考虑使用聚合特性。所以，maven聚合特性可以把多个项目模块聚合在一起构建。
-6.2 如何使用还是拿上章的项目来演示，首先在crm-parent中增加标签标签中是所">
+6.1 什么是聚合在上一章中，我们讲解了maven的继承特性，他可以使子项目直接引用父项目定义的依赖和插件。那么，如果有多个子项目，如何通过父项目进行管理，这就需要考虑使用聚合特性。所以，maven聚合特性可以把多个项目模块聚合在一起构建。">
 <meta property="og:image" content="https://img.alicdn.com/imgextra/i4/653726111/TB28DfnhXXXXXarXpXXXXXXXXXX_!!653726111.png">
 <meta property="og:image" content="https://img.alicdn.com/imgextra/i3/653726111/TB2TbHjhXXXXXbzXpXXXXXXXXXX_!!653726111.png">
 <meta property="og:image" content="https://img.alicdn.com/imgextra/i1/653726111/TB2NMvxhXXXXXbqXXXXXXXXXXXX_!!653726111.png">
-<meta property="og:updated_time" content="2015-11-13T04:57:56.365Z">
+<meta property="og:updated_time" content="2015-11-13T05:04:32.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第6章 maven聚合特性">
 <meta name="twitter:description" content="第6章 maven聚合特性
 本章用一个例子介绍maven的聚合特性。
 
-6.1 什么是聚合在上一章中，我们讲解了maven的继承特性，他可以使子项目直接引用父项目定义的依赖和插件。那么，如果有多个子项目，如何通过父项目进行管理，这就需要考虑使用聚合特性。所以，maven聚合特性可以把多个项目模块聚合在一起构建。
-6.2 如何使用还是拿上章的项目来演示，首先在crm-parent中增加标签标签中是所">
+6.1 什么是聚合在上一章中，我们讲解了maven的继承特性，他可以使子项目直接引用父项目定义的依赖和插件。那么，如果有多个子项目，如何通过父项目进行管理，这就需要考虑使用聚合特性。所以，maven聚合特性可以把多个项目模块聚合在一起构建。">
   
     <link rel="alternative" href="/atom.xml" title="大数据征信" type="application/atom+xml">
   
@@ -200,7 +197,7 @@
   
     <div class="article-meta">
       <a href="/2015/11/12/chapter6/chapter6/" class="article-date">
-  	<time datetime="2015-11-13T04:57:56.382Z" itemprop="datePublished">2015-11-12</time>
+  	<time datetime="2015-11-13T05:04:32.013Z" itemprop="datePublished">2015-11-12</time>
 </a>
     </div>
   
@@ -237,6 +234,7 @@
 <p>本章用一个例子介绍maven的聚合特性。</p>
 </blockquote>
 <h2 id="6-1_什么是聚合">6.1 什么是聚合</h2><p>在上一章中，我们讲解了maven的继承特性，他可以使子项目直接引用父项目定义的依赖和插件。那么，如果有多个子项目，如何通过父项目进行管理，这就需要考虑使用聚合特性。所以，maven聚合特性可以把多个项目模块聚合在一起构建。</p>
+<a id="more"></a>
 <h2 id="6-2_如何使用">6.2 如何使用</h2><p>还是拿上章的项目来演示，首先在crm-parent中增加<modules>标签<br>标签中是所管理的子项目<strong>相对路径</strong>。</modules></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">modules</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">module</span>&gt;</span>../crm-dao<span class="tag">&lt;/<span class="title">module</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">module</span>&gt;</span>../crm-service<span class="tag">&lt;/<span class="title">module</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">module</span>&gt;</span>../crm-web<span class="tag">&lt;/<span class="title">module</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>运行parent项目：<code>mvn clean install</code></p>
@@ -254,11 +252,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/12/chapter8/chapter8/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/12/chapter7/chapter7/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          第8章 私服nexus
+          第7章 仓库
         
       </div>
     </a>

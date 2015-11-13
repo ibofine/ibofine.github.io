@@ -21,7 +21,7 @@
 7.2 仓库的分类7.2.1 本地仓库在第一章安装maven时，我们已经设置了ma">
 <meta property="og:image" content="https://img.alicdn.com/imgextra/i3/653726111/TB20unehXXXXXb_XpXXXXXXXXXX_!!653726111.png">
 <meta property="og:image" content="https://img.alicdn.com/imgextra/i3/653726111/TB2UVYdhXXXXXcIXpXXXXXXXXXX_!!653726111.png">
-<meta property="og:updated_time" content="2015-11-13T04:58:19.333Z">
+<meta property="og:updated_time" content="2015-11-13T05:04:49.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第7章 仓库">
 <meta name="twitter:description" content="第7章 仓库
@@ -199,7 +199,7 @@
   
     <div class="article-meta">
       <a href="/2015/11/12/chapter7/chapter7/" class="article-date">
-  	<time datetime="2015-11-12T09:55:24.000Z" itemprop="datePublished">2015-11-12</time>
+  	<time datetime="2015-11-13T05:04:49.516Z" itemprop="datePublished">2015-11-12</time>
 </a>
     </div>
   
@@ -233,6 +233,7 @@
 </blockquote>
 <h2 id="7-1_何为maven仓库">7.1 何为maven仓库</h2><p>maven仓库就是放置所有jar文件（war，zip，pom等等）的地方，maven项目可以从maven仓库中获取自己所需要的依赖jar。此外，仓库中的构件都有自己的坐标，坐标描述了版本、打包方式和maven如何找到此构件。</p>
 <h2 id="7-2_仓库的分类">7.2 仓库的分类</h2><h3 id="7-2-1_本地仓库">7.2.1 本地仓库</h3><p>在第一章安装maven时，我们已经设置了maven本地仓库，那么现在，详细说一说为什么要设置本地仓库。<br>在maven项目中，是没有lib目录来存放依赖文件的，如果pom.xml中需要依赖，在编译或测试时，maven会自动基于坐标使用本地仓库的依赖文件。<br>默认情况，maven本地仓库位置在用户根目录的.m2文件夹中。<br>某些情况下，例如c盘不足，我们需要设置仓库位置。</p>
+<a id="more"></a>
 <h4 id="7-2-1-1_Linux设置方法">7.2.1.1 Linux设置方法</h4><p>找到已注释掉的<br><code>&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</code>，解开注释；<br>修改内容为：<br><code>&lt;localRepository&gt;/usr/local/maven/repo&lt;/localRepository&gt;</code><br>当然，路径你可以自己定义。</p>
 <p><img src="https://img.alicdn.com/imgextra/i3/653726111/TB20unehXXXXXb_XpXXXXXXXXXX_!!653726111.png" alt="Alt text"></p>
 <h4 id="7-2-1-2_Window设置方法">7.2.1.2 Window设置方法</h4><p>找到已注释掉的<br><code>&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</code></p>
@@ -301,15 +302,20 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/12/chapter11/chapter11/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/12/chapter8/chapter8/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          第11章 使用maven+svn+jenkins持续集成项目
+          第8章 私服nexus
         
       </div>
     </a>
   
+  
+    <a href="/2015/11/12/chapter6/chapter6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第6章 maven聚合特性</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
